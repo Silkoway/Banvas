@@ -11,6 +11,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _Canvas_instances, _Canvas_initruns, _Canvas_bgColor, _Canvas_ctx, _Canvas_setPixel;
+const VERSION = 'v0.0.0';
 /**
  * Convert absolute CSS numerical values to pixels.
  *

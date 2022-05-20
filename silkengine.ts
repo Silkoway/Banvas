@@ -1,3 +1,5 @@
+const VERSION = 'v0.0.0'
+
 /**
  * Convert absolute CSS numerical values to pixels.
  *
