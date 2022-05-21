@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Canvas_instances, _Canvas_initruns, _Canvas_bgColor, _Canvas_ctx, _Canvas_setPixel;
+var _Canvas_instances, _Canvas_initruns, _Canvas_ctx, _Canvas_setPixel;
 const VERSION = 'v0.0.0';
 /**
  * Convert absolute CSS numerical values to pixels.
@@ -190,14 +190,13 @@ class Canvas {
     constructor(options) {
         _Canvas_instances.add(this);
         _Canvas_initruns.set(this, void 0);
-        _Canvas_bgColor.set(this, void 0);
         _Canvas_ctx.set(this, void 0);
         this.__domElem = document.createElement("canvas");
         this.__id = `silkeng-canvas-${Math.floor(Math.random() * 9999999999)}`;
         this.__domElem.classList.add(this.__id);
         this.__domElem.width = options.width;
         this.__domElem.height = options.height;
-        __classPrivateFieldSet(this, _Canvas_bgColor, options.backgroundColor ? options.backgroundColor : '#ffffff', "f");
+        this.bgColor = options.backgroundColor ? options.backgroundColor : '#ffffff';
         this.width = options.width;
         this.height = options.height;
         __classPrivateFieldSet(this, _Canvas_ctx, () => document.querySelector(`.${this.__id}`).getContext("2d"), "f");
@@ -226,7 +225,7 @@ class Canvas {
         return this.__domElem;
     }
     clear() {
-        this.fill(0, 0, this.width, this.height, __classPrivateFieldGet(this, _Canvas_bgColor, "f"));
+        this.fill(0, 0, this.width, this.height, this.bgColor);
     }
     drawLine(x1, y1, x2, y2, options) {
         const m = (y2 - y1) / (x2 - x1);
@@ -272,7 +271,7 @@ class Canvas {
         __classPrivateFieldGet(this, _Canvas_ctx, "f").call(this).fillRect(x, y, width, height);
     }
 }
-_Canvas_initruns = new WeakMap(), _Canvas_bgColor = new WeakMap(), _Canvas_ctx = new WeakMap(), _Canvas_instances = new WeakSet(), _Canvas_setPixel = function _Canvas_setPixel(x, y, color) {
+_Canvas_initruns = new WeakMap(), _Canvas_ctx = new WeakMap(), _Canvas_instances = new WeakSet(), _Canvas_setPixel = function _Canvas_setPixel(x, y, color) {
     var r = parseInt(color[1] + color[2], 16);
     var g = parseInt(color[3] + color[4], 16);
     var b = parseInt(color[5] + color[6], 16);

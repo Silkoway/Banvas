@@ -281,7 +281,7 @@ class Canvas {
 	height: number;
 	__domElem: HTMLCanvasElement;
 	#initruns: number;
-	#bgColor: string;
+	bgColor: string;
 
 	sprites: Sprite[];
 
@@ -299,7 +299,7 @@ class Canvas {
 		this.__domElem.classList.add(this.__id);
 		this.__domElem.width = options.width;
 		this.__domElem.height = options.height;
-		this.#bgColor = options.backgroundColor ? options.backgroundColor : '#ffffff'
+		this.bgColor = options.backgroundColor ? options.backgroundColor : '#ffffff'
 		this.width = options.width;
 		this.height = options.height
 
@@ -337,7 +337,7 @@ class Canvas {
 	}
  
 	clear() {
-		this.fill(0, 0, this.width, this.height, this.#bgColor)
+		this.fill(0, 0, this.width, this.height, this.bgColor)
 	}
 
 	drawLine(x1: number, y1: number, x2: number, y2: number, options: LineOptions) {
